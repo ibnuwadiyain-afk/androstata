@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main, master ]
   pull_request:
-  workflow_dispatch:   # manual trigger
+  workflow_dispatch:
 
 jobs:
   build-apk:
@@ -17,15 +17,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24                    # 👈 explicitly use Node 24
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install                      # 👈 changed from npm ci (no lockfile required)
 
       - name: Build web app (produces ./dist)
         run: npm run build
-        # Make sure your package.json has "build": "vite build" or similar
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
