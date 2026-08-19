@@ -1,4 +1,4 @@
-name: Build Statistical Web App as APK
+name: Build Statistical JS Web App as APK
 
 on:
   push:
